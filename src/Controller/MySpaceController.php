@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MySpaceController extends AbstractController
 {
-    #[Route('/mySpace', name: 'app_my_space')]
+    #[Route('/profile/mySpace', name: 'app_my_space')]
     public function index(): Response
     {
         return $this->render('my_space/index.html.twig', [
