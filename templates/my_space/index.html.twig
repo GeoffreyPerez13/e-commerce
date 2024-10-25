@@ -3,26 +3,29 @@
 {% block title %}Hello MySpaceController!{% endblock %}
 
 {% block body %}
-<section>
-    {% for flash_success in app.flashes('success') %}
-    <div class="alert alert-success" role="alert">{{ flash_success }}</div>
-    {% endfor %}
+{% for flash_success in app.flashes('success') %}
+<div class="alert alert-success" role="alert">{{ flash_success }}</div>
+{% endfor %}
 
-    <h1>Bonjour {{ firstname }} !</h1>
-    <br>
-    <br>
-    <h2>Vos données personnelles :</h2>
-    <br>
-    <br>
-    <p>{{ name }} {{ firstname }}</p>
-    <p>{{ email }}</p>
-    {% if is_granted('ROLE_CUSTOMER') %}
-    <h2>Votre {{ description }} !</h2>
-    <br>
-    <div class="text-center">
-        <a class="btn btn-success" href="{{asset('formation.zip')}}" download="formation.zip">Télécharger la {{
-            description }}</a>
-    </div>
-    {% endif %}
-</section>
+<h1>Bonjour {{ firstname }} !</h1>
+<br>
+{% if verified is same as true %}
+<div class="text">Votre adresse email a bien été vérifiée.</div>
+{% elseif verified is same as false %}
+<div class="text">Votre adresse email n'a pas été vérifiée.</div>
+{% endif %}
+<br>
+<h2>Vos données personnelles :</h2>
+<br>
+<br>
+<p>{{ name }} {{ firstname }}</p>
+<p>{{ email }}</p>
+{% if is_granted('ROLE_CUSTOMER') %}
+<h2>Votre {{ description }} !</h2>
+<br>
+<div class="text-center">
+    <a class="btn btn-success" href="{{asset('formationdev.zip')}}" download="formation.zip">Télécharger la {{
+        description }}</a>
+</div>
+{% endif %}
 {% endblock %}

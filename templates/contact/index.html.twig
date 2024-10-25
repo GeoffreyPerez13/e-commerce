@@ -3,13 +3,11 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-<section>
-    {% for message in app.flahses('send') %}
-    <div class="alert alert-success">{{ message }}</div>
-    {% endfor %}
-    {{ form_start(contactForm) }}
-    {{ form_row(contactForm.message) }}
-    <input class="btn btn-primary" type="submit">
-    {{ form_end(contactForm) }}
-</section>
+{% for message in app.flashes('send') %}
+<div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{{ form_start(contactForm) }}
+{{ form_row(contactForm.message) }}
+<input class="btn btn-primary" type="submit">
+{{ form_end(contactForm) }}
 {% endblock %}

@@ -42,7 +42,7 @@ class ContactController extends AbstractController
                     "message" => $message,
                     "name" => $userName,
                     "firstname" => $userFirstName,
-                    "email" => $userEmail
+                    "userEmail" => $userEmail
                 ]));
         }
 
