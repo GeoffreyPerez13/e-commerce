@@ -47,11 +47,28 @@ class CartService {
         $this->session->set("cart", $cart);
     }
 
-    public static function getFullCart(int $Id) {
+    public static function getFullCart(): array{
+        $cart = $this->session->get("cart", []);
 
+        $cartWithData = [];
+
+        foreach ($cart as $id => $qty) {
+            $cartWithData[] = [
+                'product' => $this->productRepository->find($id),
+                'quantity' => $qty
+            ];
+        }
+
+        return $cartWithData;
     }
 
-    public static function getTotal(int $Id) {
+    public static function getTotal(): float {
+        $total = 0;
 
+        foreach ($this->getFullCart as $item) {
+            $total += $item['product']->getPrice() * $item['quantity'];
+        }
+
+        return $total;
     }
 }
