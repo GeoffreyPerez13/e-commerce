@@ -15,8 +15,17 @@ class CartController extends AbstractController
 
         return $this->render('cart/index.html.twig', [
             'items' => $cartService->getFullCart(),
-            'total' => $cartService->getTotal()
+            'total' => $cartService->getTotal(),
+            'currency' => '€'
         ]);
+    }
+
+    #[Route('/profile/cart/addFormation/{id}', name: 'app_cart_add_formation')]
+    public function addFormation(CartService $cartService): Response
+    {
+        $cartService->addFormation($id);
+
+        return $this->redirectToRoute('app_cart');
     }
 
     #[Route('/profile/cart/add/{id}', name: 'app_cart_add')]
@@ -24,10 +33,10 @@ class CartController extends AbstractController
     {
         $cartService->add($id);
 
-        return $this->redirectToRoute('app_cart');
+        return $this->redirectToRoute('app_shop');
     }
 
-    #[Route('/profile/cart/rermove/{id}', name: 'app_cart_remove')]
+    #[Route('/profile/cart/remove/{id}', name: 'app_cart_remove')]
     public function remove($id, CartService $cartService): Response
     {
         $cartService->remove($id);
@@ -40,6 +49,6 @@ class CartController extends AbstractController
     {
         $cartService->less($id);
 
-        return $this->redirectToRoute('app_cart');
+        return $this->redirectToRoute('app_shop');
     }
 }

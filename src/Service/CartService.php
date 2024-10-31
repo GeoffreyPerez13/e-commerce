@@ -3,70 +3,87 @@
 namespace App\Service;
 
 use App\Repository\ProductRepository;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class CartService {
 
-    protected $session;
+    protected $requestStack;
     protected $productRepository;
 
-    public function __construct(SessionInterface $session, ProductRepository $productRepository) {
-        $this->session = $session;
+    public function __construct(RequestStack $requestStack, ProductRepository $productRepository) {
+        $this->requestStack = $requestStack;
         $this->productRepository = $productRepository;
     }
 
-    public static function add(int $Id) {
-        $cart = $this->session->get("cart", []);
+    public function add(int $id) {
+        $cart = $this->requestStack->getSession()->get("cart", []);
 
         if(!empty($cart[$id])) {
-            $cart["id"]++;
+            $cart[$id]++;
         } else {
-            $cart["id"]  = 1;
+            $cart[$id] = 1;
         }
 
-        $this->session->set("cart", $cart);
+        $this->requestStack->getSession()->set("cart", $cart);
     }
 
-    public static function less(int $Id) {
-        $cart = $this->session->get("cart", []);
+    public function addFormation(int $id) {
+        $cart = $this->requestStack->getSession()->get("cart", []);
+
+        if(empty($cart[$id])) {
+            $cart[$id] = 1;
+        }
+    }
+
+    public function less(int $id) {
+        $cart = $this->requestStack->getSession()->get("cart", []);
 
         if(!empty($cart[$id])) {
-            $cart["id"]--;
+            if($cart[$id] > 1) {
+                $cart[$id]--;
+            } else if ($cart[$id] <= 1){
+                unset($cart[$id]);
+            }
         }
 
-        $this->session->set("cart", $cart);
+        $this->requestStack->getSession()->set("cart", $cart);
     }
 
-    public static function remove(int $Id) {
-        $cart = $this->session->get("cart", []);
+    public function remove(int $id) {
+        $cart = $this->requestStack->getSession()->get("cart", []);
 
         if(!empty($cart[$id])) {
-            unset($cart["id"]);
+            unset($cart[$id]);
         }
 
-        $this->session->set("cart", $cart);
+        $this->requestStack->getSession()->set("cart", $cart);
     }
 
-    public static function getFullCart(): array{
-        $cart = $this->session->get("cart", []);
-
+    public function getFullCart(): array {
+        $cart = $this->requestStack->getSession()->get("cart", []);
         $cartWithData = [];
 
         foreach ($cart as $id => $qty) {
-            $cartWithData[] = [
-                'product' => $this->productRepository->find($id),
-                'quantity' => $qty
-            ];
+            $product = $this->productRepository->find($id);
+            
+            if ($product) {
+                $cartWithData[] = [
+                    'product' => $product,
+                    'quantity' => $qty
+                ];
+            }
         }
 
         return $cartWithData;
     }
 
-    public static function getTotal(): float {
+    public function getTotal(): float {
         $total = 0;
 
-        foreach ($this->getFullCart as $item) {
-            $total += $item['product']->getPrice() * $item['quantity'];
+        foreach ($this->getFullCart() as $item) {
+            if ($item['product']) {
+                $total += $item['product']->getPrice() * $item['quantity'];
+            }
         }
 
         return $total;

@@ -9,7 +9,7 @@ twig:
     telephone: "0625535186"
     siret: "83218902100021"
     ape: "6201Z"
-    currency: "euros"
+    currency: "€"
     tva: "Non applicable ART.293B du CGI"
     quantity: "1"
     host: "ionos"
