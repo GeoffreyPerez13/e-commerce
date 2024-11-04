@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,44 +10,40 @@ use Symfony\Component\Routing\Attribute\Route;
 class BuyController extends AbstractController
 {
     #[Route('/profile/buy', name: 'app_buy')]
-    public function index(): Response
+    public function index(CartService $cartService): Response
     {
-        require_once '../vendor/autoload.php';
 
         $userEmail = $this->getUser()->getEmail();
+        $cart = $cartService->getFullCart();
 
-        if($_ENV["APP_ENV"] === "dev") {
+        if ($_ENV["APP_ENV"] === "dev") {
             $stripeSecretKey = $_ENV["STRIPE_SECRET_KEY_DEV"];
-            $YOUR_DOMAIN = 'http://localhost:4242';     
-        } else if ($_ENV["APP_ENV"] === "prod") {
+            $YOUR_DOMAIN = 'http://127.0.0.1:8000';     
+        } else {
             $stripeSecretKey = $_ENV["STRIPE_SECRET_KEY_PROD"];
             $YOUR_DOMAIN = 'https://atelierpanthera.fr';  
         }
 
         \Stripe\Stripe::setApiKey($stripeSecretKey);
-        header('Content-Type: application/json');
         
-        $checkout_session = \Stripe\Checkout\Session::create([
+        $checkoutSession = \Stripe\Checkout\Session::create([
             'billing_address_collection' => 'required',
-            'custom_text' => [
-                'submit' => [
-                    'message' => "En cliquant sur j'accepte, vous renoncez à votre droit à un délai de rétractation de 14 jours et ne pourrez pas demander un remboursement."
-                ],
-            ],
-            'consent_collection' => [
-                'term_of_service' => 'required',
-            ],
             'customer_email' => $userEmail,
-
-            'line_items' => [[
-            # Provide the exact Price ID (e.g pr_1234) of the product you want to sell
-                'price' => $price,
-                'quantity' => 1,
-            ]],
+            'line_items' => array_map(fn (array $item) => [
+                'quantity' => $item['quantity'],
+                'price_data' => [
+                    'currency' => 'EUR',
+                    'unit_amount' => $item['product']->getPrice() * 100,
+                    'product_data' => [
+                        'name' => $item['product']->getName(),
+                        'description' => $item['product']->getDescription(),
+                    ],
+                ],
+            ], $cart),
             'mode' => 'payment',
             'allow_promotion_codes' => true,
             'invoice_creation' => [
-                'enable' => true,
+                'enabled' => true,
                 'invoice_data' => [
                     'custom_fields' => [
                         [
@@ -61,32 +58,29 @@ class BuyController extends AbstractController
                             'name' => 'TVA',
                             'value' => 'Non applicable ART.293B du CGI',
                         ],
-                    ]
-                ]
                     ],
-            'success_url' => $YOUR_DOMAIN . 'success',
-            'cancel_url' => $YOUR_DOMAIN . '/cancel',
+                ],
+            ],
+            'success_url' => $YOUR_DOMAIN . '/profile/success',
+            'cancel_url' => $YOUR_DOMAIN . '/profile/cancel',
             'automatic_tax' => [
-                'enable' => true,
+                'enabled' => true,
             ],
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header(header: "Location: " . $checkout_session->url);
-
-
-        return $this->render('buy/index.html.twig');
+        return $this->redirect($checkoutSession->url);
     }
 
-    #[Route(path:'/profile/success', name:'app_success')]
-    public function success(): Response {
+    #[Route('/profile/success', name: 'app_success')]
+    public function success(): Response
+    {
         return $this->render('buy/success.html.twig');
-        }
+    }
 
-    #[Route(path:'/profile/cancel', name:'app_cancel')]
-    public function cancel(): Response {
+    #[Route('/profile/cancel', name: 'app_cancel')]
+    public function cancel(): Response
+    {
         $this->addFlash('cancel', 'Votre achat a été annulé');
-
         return $this->redirectToRoute('app_home');
-        }
+    }
 }
