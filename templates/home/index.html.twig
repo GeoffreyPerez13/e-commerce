@@ -5,33 +5,84 @@
 <img id="header-image" src="{{ asset('images/businessman.jpg') }}" alt="image affaire">
 {% endblock %}
 {% block body %}
-{% for message in app.flashes('cancel') %}
-<div class="alert alert-success">{{ message }}</div>
-{% endfor %}
-<h1>Bonjour !</h1>
-<br>
-<p>Vous recherchez un télétravail ?
-    Vous désirez être indépendant et travailler de où vous voulez et quand vous voulez ?
-    Alors vous êtes au bon endroit. {{ company }} a l'immense plaisir de vous présenter la {{ formation.name }} qui vous
-    permettra de dévenir développeur web et mobile. La seule chose dont vous aurez besoin est d'un ordinateur et d'une
-    connexion à internet.
-</p>
-<br>
-<div class="text-center">
-    <a class="btn btn-success" href="{{ path('app_shop') }}">Achetez la {{ formation.name }} maintenant</a>
-</div>
-<br>
-<h2>En quoi consiste le métier de développeur ?</h2>
-<br>
-<p>Cela consite à créer des sites web et des applications mobile pour vous même ou pour des clients.
-    Pour cela, le développeur doit maitriser les différents langages de code ainsi que les différents outils
-    informatiques nécessaires à la réalisation d'un site web.
-    Le développeur doit aussi connaitre la réglementation conecernant les données personnelles des utilisateurs ainsi
-    que les lois concernant la réalisation de site web.
-</p>
-<br>
-<div class="text-center">
-    <a class="btn btn-success" href="{{ path('app_shop') }}" role="button">Achetez la {{ formation.name }}
-        maintenant</a>
-</div>
+<!-- SECTION INTRODUCTION -->
+<section>
+    {% for message in app.flashes('cancel') %}
+    <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    <h1>Bienvenue sur l'atelier Panthera</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti veritatis velit autem quis doloremque ab
+        quae repudiandae, iste libero cum dolorem tempore amet non perspiciatis pariatur eos nisi ullam cupiditate!
+        Totam corporis blanditiis consectetur nulla rem, nemo, iure quibusdam animi impedit, mollitia omnis quisquam.
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto, minus dignissimos. Quisquam culpa est quo magni
+        iste labore asperiores ea.</p>
+</section>
+
+<!-- SECTION BOUTIQUE -->
+<section>
+    <h1>Boutique</h1>
+    <p>{{ company }} a l'immense plaisir de vous accueillir sur notre site internet. Vous trouverez nos différentes
+        gammes
+        de produits dans notre <a href="{{ path('app_shop') }}">boutique</a>.
+    </p>
+    <div class="gallery">
+        <img src="images/product-home-shop-1.jpg" alt="Produit 1" class="gallery-item" onclick="openLightbox(this)">
+        <img src="images/product-home-shop-2.jpg" alt="Produit 2" class="gallery-item" onclick="openLightbox(this)">
+        <img src="images/product-home-shop-3.jpg" alt="Produit 3" class="gallery-item" onclick="openLightbox(this)">
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Agrandissement de l'image"
+            onclick="event.stopPropagation()">
+    </div>
+</section>
+
+<!-- SECTION S'ENREGISTRER / SE CONNECTER -->
+<section class="register-login-section">
+    <div class="container">
+        <div class="row">
+            <!-- Colonne gauche : S'enregistrer -->
+            <div class="columns column-register">
+                <div class="bloc-left">
+                    <h1>S'enregistrer</h1>
+                    <p>Créez votre compte via le lien ci-dessous.
+                    </p>
+                    <a class="btn" href="{{ path('app_register') }}">S'enregistrer</a>
+                </div>
+                <div class="bloc-right">
+                    <img id="image-bloc-left" src="{{ asset('images/businessman.jpg') }}" alt="image affaire">
+                </div>
+            </div>
+
+            <!-- Colonne droite : Se connecter -->
+            <div class="columns column-login">
+                <div class="bloc-left">
+                    <img id="header-image" src="{{ asset('images/businessman.jpg') }}" alt="image affaire">
+                </div>
+                <div class="bloc-right">
+                    <h1>Se connecter</h1>
+                    <p>Vous pouvez vous connecter sur votre compte en cliquant sur le lien ci-dessous.
+                    </p>
+                    <a class="btn" href="{{ path('app_login') }}">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION CONDITIONS GENERALES/REGLEMENTATION/LICENCE -->
+<section>
+    <h1>Conditions générales de vente / Règlementation / Licence</h1>
+    <p>Vous trouverez ci-dessous les différents liens menant aux conditions et règlementations de l'Atelier Panthera.
+    </p>
+    <div class="align-buttons">
+        <a class="btn" target="_blank" href="{{ path('app_cgv') }}">Conditions générales de vente</a>
+        <a class="btn" target="_blank" href="{{ path('app_rgpd') }}">Règlementation
+            concernant les données personnelles</a>
+        <a class="btn" target="_blank" href="{{ path('app_licence') }}">Licence</a>
+    </div>
+</section>
 {% endblock %}

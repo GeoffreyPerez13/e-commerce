@@ -10,6 +10,7 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -21,54 +22,60 @@
 
 <body>
     <header>
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
+        <nav class="navbar sticky-top navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ path('app_home') }}"> Accueil</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_shop') }}">Boutique</a>
+
+                <!-- NAVBAR GAUCHE -->
+                <div class="navbar-left">
+                    <img src="{{ asset('images/logo-header.png') }}" alt="Logo Atelier Panthera">
+                    <a href="{{ path('app_home') }}">ATELIER PANTHERA</a>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                        data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <!-- NAVBAR DROITE -->
+                <div class="navbar-right" id="navbarColor02">
+                    <ul>
+                        <li>
+                            <a class="nav-header" href="{{ path('app_shop') }}">Boutique</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_cart') }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        {% if not app.user %}
+                        <li>
+                            <a id="connecter" class="nav-header" aria-current="page"
+                                href="{{ path('app_register') }}">S'enregistrer</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            {% if app.user %}
+                            <a id="login" class="nav-header" aria-current="page" href="{{ path('app_logout') }}">Se
+                                déconnecter</a>
+                            {% else %}
+                            <a id="login" class="nav-header" aria-current="page" href="{{ path('app_login') }}">Se
+                                connecter</a>
+                            {% endif %}
+                        </li>
+                        {% if app.user %}
+                        <li>
+                            <a class="nav-header" href="{{ path('app_cart') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                     width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
                                     <path
                                         d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
                                 </svg></a>
                         </li>
-                        <li class="nav-item">
-                            <a id="CGV" class="nav-link" href="{{ path('app_cgv') }}">Conditions générales de vente</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="RGPD" class="nav-link" aria-current="page"
-                                href="{{ path('app_rgpd') }}">Règlementation
-                                concernant les données personnelles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="licence" class="nav-link" aria-current="page"
-                                href="{{ path('app_licence') }}">Licence</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="contact" class="nav-link" aria-current="page"
+                        {% endif %}
+                        <li>
+                            <a id="contact" class="nav-header" aria-current="page"
                                 href="{{ path('app_contact') }}">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a id="connecter" class="nav-link" aria-current="page"
-                                href="{{ path('app_register') }}">S'enregistrer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="login" class="nav-link" aria-current="page" href="{{ path('app_login') }}">Se
-                                connecter/Se
-                                déconnecter</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="login" class="nav-link" aria-current="page" href="{{ path('app_my_space') }}">Mon
+                        {% if app.user %}
+                        <li>
+                            <a id="login" class="nav-header" aria-current="page" href="{{ path('app_my_space') }}">Mon
                                 espace</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -78,6 +85,49 @@
     <main>
         {% block body %}{% endblock %}
     </main>
+    <footer>
+        <div class="row">
+            <!-- Partie gauche -->
+            <div class="footer-left">
+                <img src="{{ asset('images/logo-header.png') }}" alt="Logo Atelier Panthera">
+                <ul class="conditions-links">
+                    <li><a href="{{ path('app_cgv') }}" target="_blank">Conditions générales de vente</a></li>
+                    <li><a href="{{ path('app_rgpd') }}" target="_blank">Règlementation concernant les données
+                            personnelles</a></li>
+                    <li><a href="{{ path('app_licence') }}" target="_blank">Licence</a></li>
+                </ul>
+                <div class="networks-links"></div>
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <img src="{{ asset('images/facebook-icon.png') }}" alt="Facebook">
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <img src="{{ asset('images/instagram-icon.png') }}" alt="Instagram">
+                </a>
+                <a href="https://tiktok.com" target="_blank" class="social-icon">
+                    <img src="{{ asset('images/tiktok-icon.png') }}" alt="TikTok">
+                </a>
+            </div>
+
+            <!-- Partie du milieu -->
+            <div class="footer-middle">
+                <p><strong>Atelier Panthera</strong></p>
+                <p><strong>Email :</strong> <a href="mailto:contact@atelierpanthera.com">contact@atelierpanthera.com</a>
+                </p>
+                <p><strong>Téléphone :</strong> <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                <p><strong>Adresse :</strong> <a href="https://www.google.com/maps?q=123+Rue+de+la+Liberté,+75000+Paris"
+                        target="_blank">123 Rue de la Liberté, 75000 Paris</a></p>
+            </div>
+
+            <!-- Partie droite -->
+            <div class="footer-right">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9993208473537!2d2.292292615674236!3d48.85884407928715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fdeb320d711%3A0x421516b8a8b0c864!2s123%20Rue%20de%20la%20Libert%C3%A9%2C%2075000%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1700000000000!5m2!1sen!2sfr"
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

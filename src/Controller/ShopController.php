@@ -9,7 +9,7 @@ use App\Repository\ProductRepository;
 
 class ShopController extends AbstractController
 {
-    #[Route('/profile/shop', name: 'app_shop')]
+    #[Route('/shop', name: 'app_shop')]
     public function index(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();

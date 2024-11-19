@@ -1,16 +1,12 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
+// Import Sass
 import './styles/app.sass';
 
-// import jquery
+// Import Jquery
 const $ = require('jquery')
 
-//bootstrap
+// Import Bootstrap
 require('bootstrap')
 
-//import js file
-import "./showAndHiddePassword"
+/* JS */
+import "./lightboxHomeShopSection" // Afficher la lightbox dans la page d'accueil, section Boutique
+import "./showAndHiddePassword" // Masquer et afficher le mot de passe
