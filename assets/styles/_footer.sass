@@ -34,12 +34,24 @@ footer
                     transition: 0.5s ease
 
         .networks-links
+            display: flex
+            justify-content: flex-start
+            margin-top: 5%
+            gap: 8%
+
+        .social-icon
+            text-decoration: none
+            font-size: 30px
+            color: white
+
+        .social-icon:hover
+            color: rgba(3, 18, 34, 1)
+            transition: 0.5s ease
 
     .footer-middle
-        text-align: center
 
         p
-            margin: 5px 0
+            margin: 3% 0
             color: white
 
             strong
@@ -53,6 +65,18 @@ footer
                     color: rgba(3, 18, 34, 1)
                     transition: 0.5s ease
 
+        .social-icon
+            text-decoration: none
+            color: white
+            display: flex
+            margin: 2% 0
+            justify-content: flex-start
+
+        .social-icon:hover
+            color: rgba(3, 18, 34, 1)
+            transition: 0.5s ease
+
 .footer-right iframe
+    height: 100%
     border-radius: 10px
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)

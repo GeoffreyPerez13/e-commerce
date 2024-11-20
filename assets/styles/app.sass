@@ -1,4 +1,16 @@
+/* Colors :
+ background-color: rgba(89, 171, 238, 1)
+ color: white
+ color: rgba(3, 18, 34, 1)
+ color: rgba(184, 46, 16, 1)
+ border: 1px solid rgba(63, 142, 207, 1)
+ transition: transform 0.5s ease
+ */
+
+// Bootstrap
 @import '~bootstrap/scss/bootstrap'
+
+// Généralités
 @import './_body'
 @import './_main'
 @import './_h'
@@ -6,18 +18,19 @@
 @import './_btn'
 
 // Header
-/* Colors :
- background-color: rgba(89, 171, 238, 1)
- color: white
- color: rgba(3, 18, 34, 1)
- border: 1px solid rgba(63, 142, 207, 1)
- */
-
-@import './_menu-header'
-@import './_header-image'
+@import './header/_menu-header'
+@import './header/_header-image'
 
 // Sections
 @import './_section'
+
+// Inscription
+@import './register/_register'
+@import './register/_verify-register'
+@import './register/_confirmation-mail-register'
+
+// Lois et règlementations
+@import './_rgpd'
 
 @import './_password-icon'
 

@@ -2,36 +2,49 @@
 {% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
-<section>
-    {% for flash_error in app.flashes('verify_email_error') %}
-    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+<section class="registration-page">
+    <div class="container">
+        <div class="row">
+            <!-- Colonne gauche : Formulaire -->
+            <div id="registration-container">
+                {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
 
-    <h1>S'enregistrer</h1>
+                <h1>S'enregistrer</h1>
+                <p id="required-field">* Champ obligatoire</p>
 
-    {{ form_errors(registrationForm) }}
+                {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.name) }}
-    {{ form_row(registrationForm.firstname) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, {
-    label: 'Mot de passe'
-    }) }}
-    <div id="eye">
-        <span class="material-symbols-outlined eye-on">visibility</span>
-        <span class="material-symbols-outlined eye-off">visibility_off</span>
-        <span class="displayEye">Afficher le mot de passe</span>
-        <span class="noDisplay">Cacher le mot de passe</span>
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.name) }}
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+                }) }}
+                <div id="eye">
+                    <span class="material-symbols-outlined eye-on">visibility</span>
+                    <span class="material-symbols-outlined eye-off">visibility_off</span>
+                    <span class="displayEye">Afficher le mot de passe</span>
+                    <span class="noDisplay">Cacher le mot de passe</span>
+                </div>
+                {{ form_row(registrationForm.agreeTerms, {
+                label: "Accepter les conditions d'utilisation"
+                }) }}
+                <div class="form-footer">
+                    <a href="{{ path('app_rgpd') }}" class="rgpd-link">Règlementation Générale de la Protection des
+                        Données</a>
+                    <button type="submit" class="btn btn-primary">S'enregistrer</button>
+                </div>
+                {{ form_end(registrationForm) }}
+            </div>
+
+            <!-- Colonne droite : Image -->
+            <div class="col-md-6 image-container">
+                <img src="{{ asset('images/registration.jpg') }}" alt="S'enregistrer" class="img-fluid">
+            </div>
+        </div>
     </div>
-    <br>
-    {{ form_row(registrationForm.agreeTerms, {
-    label: "Accepter les conditions d'utilisation"
-    }) }}
-    <a href="{{ path('app_rgpd') }}">Règlementation Générale de la Protection des Données</a>
-    <br>
-    <br>
-    <button type="submit" class="btn btn-primary">S'enregistrer</button>
-    {{ form_end(registrationForm) }}
 </section>
 {% endblock %}

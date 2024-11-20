@@ -11,6 +11,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -89,33 +90,45 @@
         <div class="row">
             <!-- Partie gauche -->
             <div class="footer-left">
-                <img src="{{ asset('images/logo-header.png') }}" alt="Logo Atelier Panthera">
+                <a href="{{ path('app_home') }}">
+                    <img src="{{ asset('images/logo-header.png') }}" alt="Logo Atelier Panthera">
+                </a>
                 <ul class="conditions-links">
-                    <li><a href="{{ path('app_cgv') }}" target="_blank">Conditions générales de vente</a></li>
-                    <li><a href="{{ path('app_rgpd') }}" target="_blank">Règlementation concernant les données
-                            personnelles</a></li>
+                    <li>
+                        <a href="{{ path('app_cgv') }}" target="_blank">Conditions générales de vente</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_rgpd') }}" target="_blank">Règlementation concernant les données
+                            personnelles</a>
+                    </li>
                     <li><a href="{{ path('app_licence') }}" target="_blank">Licence</a></li>
                 </ul>
-                <div class="networks-links"></div>
-                <a href="https://facebook.com" target="_blank" class="social-icon">
-                    <img src="{{ asset('images/facebook-icon.png') }}" alt="Facebook">
-                </a>
-                <a href="https://instagram.com" target="_blank" class="social-icon">
-                    <img src="{{ asset('images/instagram-icon.png') }}" alt="Instagram">
-                </a>
-                <a href="https://tiktok.com" target="_blank" class="social-icon">
-                    <img src="{{ asset('images/tiktok-icon.png') }}" alt="TikTok">
-                </a>
+                <div class="networks-links">
+                    <a href="https://facebook.com" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- Partie du milieu -->
             <div class="footer-middle">
                 <p><strong>Atelier Panthera</strong></p>
-                <p><strong>Email :</strong> <a href="mailto:contact@atelierpanthera.com">contact@atelierpanthera.com</a>
+                <p><strong>Email : </strong> <a
+                        href="mailto:contact@atelierpanthera.com">contact@atelierpanthera.com</a>
                 </p>
-                <p><strong>Téléphone :</strong> <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
-                <p><strong>Adresse :</strong> <a href="https://www.google.com/maps?q=123+Rue+de+la+Liberté,+75000+Paris"
-                        target="_blank">123 Rue de la Liberté, 75000 Paris</a></p>
+                <p><strong>Téléphone : </strong> <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                <p><strong>Adresse : </strong> <a
+                        href="https://www.google.com/maps?q=123+Rue+de+la+Liberté,+75000+Paris" target="_blank">123 Rue
+                        de la Liberté, 75000 Paris</a></p>
+                <a href="https://instagram.com" target="_blank" class="social-icon">@instaPanthera</a>
+                <a href="https://facebook.com" target="_blank" class="social-icon">@facePanthera</a>
+                <a href="https://tiktok.com" target="_blank" class="social-icon">@tikPanthera</a>
             </div>
 
             <!-- Partie droite -->
