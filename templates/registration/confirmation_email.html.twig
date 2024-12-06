@@ -1,10 +1,10 @@
 <h1>Merci pour votre inscription sur {{ company }}</h1>
 
-<p>Bonjour, l'{{ company }} vous remercie pour votre confiance et vous souhaite la bienvenue parmis nous !</p>
+<p>Bonjour, {{ company }} vous remercie pour votre confiance et vous souhaite la bienvenue parmis nous !</p>
 <p>Vérifiez votre email en cliquant
     <a href="{{ signedUrl|raw }}"> sur le lien suivant</a>.
 </p>
 <p>Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</p>
 <p>Nous avons hâte de vous voir sur notre site.</p>
 <p>Bien à vous,</p>
-<p>l'{{ company }}</p>
+<p>{{ company }}</p>

@@ -3,19 +3,33 @@
 {% block title %}Réinitialiser le mot de passe{% endblock %}
 
 {% block body %}
-{% for flash_error in app.flashes('reset_password_error') %}
-<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-{% endfor %}
-<h1>Réinitialiser le mot de passe</h1>
+<section class="reset-password-page">
+    <div class="container">
+        <div class="row">
+            <!-- Colonne gauche : Formulaire -->
+            <div id="reset-password-container">
+                {% for flash_error in app.flashes('reset_password_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+                <h1>Réinitialiser le mot de passe</h1>
+                <p id="required-field">* Champ obligatoire</p>
+                {{ form_start(requestForm) }}
+                {{ form_row(requestForm.email) }}
+                <div>
+                    <small>
+                        Entrez votre adresse email afin de recevoir un lien pour réinitialiser votre mot de passe.
+                    </small>
+                </div>
+                <button class="btn btn-primary">Envoyer l'email de réinitialisation de mot de passe</button>
+                {{ form_end(requestForm) }}
+            </div>
 
-{{ form_start(requestForm) }}
-{{ form_row(requestForm.email) }}
-<div>
-    <small>
-        Entrez votre adresse email afin de recevoir un lien pour réinitialiser votre mot de passe.
-    </small>
-</div>
-
-<button class="btn btn-primary">Envoyer l'email de réinitialisation de mot de passe</button>
-{{ form_end(requestForm) }}
+            <!-- Colonne droite : Image -->
+            <div class="col-md-6 image-container">
+                <img src="{{ asset('images/banners/form-banner-1.jpg') }}" alt="Image réinitialisation mot de passe"
+                    class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

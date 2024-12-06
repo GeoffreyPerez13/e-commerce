@@ -1,38 +1,68 @@
 /* Colors :
- background-color: rgba(89, 171, 238, 1)
+ background-color: rgba(75, 161, 83, 1)
  color: white
- color: rgba(3, 18, 34, 1)
+ color: rgba(9, 40, 12, 1)
  color: rgba(184, 46, 16, 1)
- border: 1px solid rgba(63, 142, 207, 1)
+ border: 1px solid rgba(29, 94, 35, 1)
  transition: transform 0.5s ease
+ background-color sections: rgba(103, 188, 111, 1)
+ background-color footer:rgba(67, 108, 72, 1)
  */
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap'
 
-// Généralités
-@import './_body'
-@import './_main'
-@import './_h'
-@import './_p'
-@import './_btn'
+// Generalities
+@import './generalities/_body'
+@import './generalities/_main'
+@import './generalities/_h'
+@import './generalities/_p'
+@import './generalities/_btn'
+@import './generalities/_password-icon'
 
 // Header
 @import './header/_menu-header'
 @import './header/_header-image'
 
-// Sections
-@import './_section'
+// Home sections
+@import './home-sections/_section'
+// Introduction section
+@import './home-sections/introduction/_home-introduction-section'
+// Shop section
+@import './home-sections/shop/_home-shop-section'
+@import './home-sections/shop/lightbox'
+// Register-Login section
+@import './home-sections/register-login/_home-register-login-section'
+// Reglementations section
+@import './home-sections/reglementations/_reglementations'
 
-// Inscription
+// Shop
+@import './shop/_shop'
+
+// Cart
+@import './cart/_cart'
+
+// Register
 @import './register/_register'
 @import './register/_verify-register'
 @import './register/_confirmation-mail-register'
 
-// Lois et règlementations
-@import './_rgpd'
+// Login
+@import './login/_login'
+@import './login/_request-reset-password'
+@import './login/_check-email-reset-password'
+@import './login/_reset-password'
 
-@import './_password-icon'
+// My Space
+@import './my-space/_my-space'
+
+// Reglementations
+@import './reglementations/_rgpd'
+@import './reglementations/_sale-conditions'
+@import './reglementations/_license'
+
+// Contact
+@import './contact/_contact'
 
 // Footer
-@import './_footer.sass'
+@import './footer/_footer'

@@ -3,12 +3,17 @@
 {% block title %}Envoi de l'email pour réinitialiser le mote de passe{% endblock %}
 
 {% block body %}
-<p>
-    Si votre adresse email existe déjà, un email contenant un lien pour réinitialiser votre mot de passe à déjà été
-    envoyé.
-    Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData,
-    'ResetPasswordBundle') }}.
-</p>
-<p>Si vous n'avez pas reçu d'email, vérifiez dans vos courriers indésirables <a
-        href="{{ path('app_forgot_password_request') }}">Veuillez réessayer</a>.</p>
+<section class="check-email-page">
+    <h1>Email de réinitialisation de mot de passe envoyé</h1>
+    <p>
+        Un email contenant un lien pour réinitialiser votre mot de passe à déjà été
+        envoyé.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData,
+        'ResetPasswordBundle') }}.
+    </p>
+    <p>Si vous n'avez pas reçu d'email, veuillez vérifiez dans vos courriers indésirables.
+    <p>Sinon, veuillez réessayer et vérifier que l'adresse mail rentrée dans le formulaire est correcte.</p>
+    <a href="{{ path('app_forgot_password_request') }}">Réinitialiser de nouveau le mot de passe.</a></p>
+</section>
+
 {% endblock %}

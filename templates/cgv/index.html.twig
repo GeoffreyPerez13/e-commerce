@@ -3,24 +3,29 @@
 {% block title %}CGV{% endblock %}
 
 {% block body %}
-<h1>Conditions générales de vente</h1>
-<br>
-<ol>
-    <li>Licence GNU <a aria-current="page" href="{{ path('app_licence') }}">Licence</a></li>
-    <li>Le prix unitaire de la {{ formation.name }} est de {{ formation.price }} {{ formation.currency }}.
-    </li>
-    <li>Le prix d'un {{ soutien.name }} est de {{ soutien.price }} {{ soutien.currency }} pour 1h00.</li>
-    <li>Le paiement sera effectué à {{ name }} dont voici les coordonnées : Nom de la micro-entreprise : {{ company }},
-        numéro de siret {{ siret }}, code APE : {{ ape }}, adresse : {{ address }}, adresse e-mail : {{ email }},
-        numéro de téléphone {{ telephone }}.</li>
-    <li>Mode de paiement : le paiement s'effectuera par carte bancaire uniquement.</li>
-    <li>La {{ formation.name }} étant un dossier numérique et téléchargeable immédiatement après le paiement, vous devez
-        renocer à votre délai de rétractation de 14 jours et ne pouvez pas demander un remboursement.</li>
-    <li>Les {{ soutien.name }} sont un service en ligne et en live. Vous pouvez rétracter et demander un remboursement
-        en cas d'annulation du service.</li>
-    <li>Une fois le paiement effectué et valide, vous recevrez un e-mail contenant la facture et vous pourrez
-        télécharger la {{ formation.name }}.</li>
-    <li>La TVA est {{ tva }}.</li>
-    <li>{{ name }} est le responsable du site web et {{ host }} l'hébergeur.</li>
-</ol>
+<section class="sale-conditions">
+    <h1>Conditions générales de vente</h1>
+    <br>
+    <ol>
+        <li>Licence GNU <a aria-current="page" href="{{ path('app_licence') }}">Licence</a></li>
+        <li>Le prix unitaire de la {{ formation.name }} est de {{ formation.price }} {{ formation.currency }}.
+        </li>
+        <li>Le prix d'un {{ soutien.name }} est de {{ soutien.price }} {{ soutien.currency }} pour 1h00.</li>
+        <li>Le paiement sera effectué à {{ name }} dont voici les coordonnées : Nom de la micro-entreprise : {{ company
+            }},
+            numéro de siret {{ siret }}, code APE : {{ ape }}, adresse : {{ address }}, adresse e-mail : {{ email }},
+            numéro de téléphone {{ telephone }}.</li>
+        <li>Mode de paiement : le paiement s'effectuera par carte bancaire uniquement.</li>
+        <li>La {{ formation.name }} étant un dossier numérique et téléchargeable immédiatement après le paiement, vous
+            devez
+            renocer à votre délai de rétractation de 14 jours et ne pouvez pas demander un remboursement.</li>
+        <li>Les {{ soutien.name }} sont un service en ligne et en live. Vous pouvez rétracter et demander un
+            remboursement
+            en cas d'annulation du service.</li>
+        <li>Une fois le paiement effectué et valide, vous recevrez un e-mail contenant la facture et vous pourrez
+            télécharger la {{ formation.name }}.</li>
+        <li>La TVA est {{ tva }}.</li>
+        <li>{{ name }} est le responsable du site web et {{ host }} l'hébergeur.</li>
+    </ol>
+</section>
 {% endblock %}

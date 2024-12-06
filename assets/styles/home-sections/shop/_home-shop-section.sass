@@ -1,0 +1,46 @@
+// SECTION BOUTIQUE
+.shop-section
+    a
+        color: rgba(75, 161, 83, 1)
+
+    a:hover
+        color: rgba(29, 94, 35, 1)
+
+// Style de la galerie
+.gallery
+    display: flex
+    justify-content: space-around
+    margin-top: 5%
+
+    &-item
+        width: 20%
+        height: 325px
+        object-fit: cover
+        cursor: pointer
+        transition: transform 0.5s ease
+
+    &-item:hover
+        transform: scale(1.05)
+////////////////////////////////////////
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    .gallery
+
+        &-item:nth-child(n+3)
+            display: none
+
+        &-item
+            height: 200px
+
+/* Version Tablette */
+@media screen and ( max-width: 769px )
+    .gallery
+        &-item:nth-child(n+2)
+            display: none
+
+        &-item
+            width: 35%
+            height: 225px
+////////////////////////////////////////

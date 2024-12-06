@@ -2,15 +2,15 @@
 
 {% block title %}Home{% endblock %}
 {% block img %}
-<img id="header-image" src="{{ asset('images/businessman.jpg') }}" alt="image affaire">
+<img id="header-image" src="{{ asset('images/banners/banner.jpg') }}" alt="Image bannière">
 {% endblock %}
 {% block body %}
 <!-- SECTION INTRODUCTION -->
-<section>
+<section class="introduction-section">
     {% for message in app.flashes('cancel') %}
     <div class="alert alert-success">{{ message }}</div>
     {% endfor %}
-    <h1>Bienvenue sur l'atelier Panthera</h1>
+    <h1>Bienvenue sur {{ company }}</h1>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti veritatis velit autem quis doloremque ab
         quae repudiandae, iste libero cum dolorem tempore amet non perspiciatis pariatur eos nisi ullam cupiditate!
         Totam corporis blanditiis consectetur nulla rem, nemo, iure quibusdam animi impedit, mollitia omnis quisquam.
@@ -20,16 +20,19 @@
 </section>
 
 <!-- SECTION BOUTIQUE -->
-<section>
+<section class="shop-section">
     <h1>Boutique</h1>
     <p>{{ company }} a l'immense plaisir de vous accueillir sur notre site internet. Vous trouverez nos différentes
         gammes
         de produits dans notre <a href="{{ path('app_shop') }}">boutique</a>.
     </p>
     <div class="gallery">
-        <img src="images/product-home-shop-1.jpg" alt="Produit 1" class="gallery-item" onclick="openLightbox(this)">
-        <img src="images/product-home-shop-2.jpg" alt="Produit 2" class="gallery-item" onclick="openLightbox(this)">
-        <img src="images/product-home-shop-3.jpg" alt="Produit 3" class="gallery-item" onclick="openLightbox(this)">
+        <img src="images/home/product-home-shop-1.jpg" alt="Produit 1" class="gallery-item"
+            onclick="openLightbox(this)">
+        <img src="images/home/product-home-shop-2.jpg" alt="Produit 2" class="gallery-item"
+            onclick="openLightbox(this)">
+        <img src="images/home/product-home-shop-3.jpg" alt="Produit 3" class="gallery-item"
+            onclick="openLightbox(this)">
     </div>
 
     <!-- Lightbox -->
@@ -48,24 +51,23 @@
             <div class="columns column-register">
                 <div class="bloc-left">
                     <h1>S'enregistrer</h1>
-                    <p>Créez votre compte via le lien ci-dessous.
-                    </p>
+                    <p>Créez votre compte via le lien ci-dessous.</p>
                     <a class="btn" href="{{ path('app_register') }}">S'enregistrer</a>
                 </div>
-                <div class="bloc-right">
-                    <img id="image-bloc-left" src="{{ asset('images/businessman.jpg') }}" alt="image affaire">
+                <div class="bloc-right image-left">
+                    <img id="image-bloc-left" src="{{ asset('images/banners/form-banner-1.jpg') }}" alt="image affaire">
                 </div>
             </div>
 
             <!-- Colonne droite : Se connecter -->
             <div class="columns column-login">
-                <div class="bloc-left">
-                    <img id="header-image" src="{{ asset('images/businessman.jpg') }}" alt="image affaire">
+                <div class="bloc-left image-right">
+                    <img id="image-bloc-right" src="{{ asset('images/banners/form-banner-1.jpg') }}"
+                        alt="image affaire">
                 </div>
                 <div class="bloc-right">
                     <h1>Se connecter</h1>
-                    <p>Vous pouvez vous connecter sur votre compte en cliquant sur le lien ci-dessous.
-                    </p>
+                    <p>Vous pouvez vous connecter sur votre compte en cliquant sur le lien ci-dessous.</p>
                     <a class="btn" href="{{ path('app_login') }}">Se connecter</a>
                 </div>
             </div>
@@ -76,7 +78,7 @@
 <!-- SECTION CONDITIONS GENERALES/REGLEMENTATION/LICENCE -->
 <section>
     <h1>Conditions générales de vente / Règlementation / Licence</h1>
-    <p>Vous trouverez ci-dessous les différents liens menant aux conditions et règlementations de l'Atelier Panthera.
+    <p>Vous trouverez ci-dessous les différents liens menant aux conditions et règlementations de {{ company }}.
     </p>
     <div class="align-buttons">
         <a class="btn" target="_blank" href="{{ path('app_cgv') }}">Conditions générales de vente</a>

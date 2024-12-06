@@ -36,7 +36,7 @@ class ContactController extends AbstractController
                 ->from($adminEmail)
                 ->to($adminEmail)
                 ->replyTo($userEmail)
-                ->subject("Message provenant d'un utilisateur du site Panthera.")
+                ->subject("Message provenant d'un utilisateur du site La Main Verte.")
                 ->htmlTemplate("contact/email.html.twig")
                 ->context([
                     "message" => $message,

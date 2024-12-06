@@ -1,0 +1,124 @@
+// SECTION S'ENREGISTRER / SE CONNECTER 
+.register-login-section
+    padding: 0
+    background-color: rgba(103, 188, 111, 1)
+    color: white
+
+    .container
+        margin: auto
+        width: 100%
+        max-width: 100%
+
+    .row
+        display: flex
+        justify-content: space-between
+        text-align: center
+        position: relative
+
+        // Ligne de séparation centrale
+        &::before
+            content: ''
+            position: absolute
+            width: 1px
+            background-color: black
+            top: 0
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+
+    .columns
+        flex: 1
+        padding: 0
+
+    // Partie gauche : S'enregistrer
+    .column-register
+        display: flex
+        text-align: left
+
+        .bloc-left
+            width: 60%
+            padding: 10%
+
+        .bloc-right
+            position: relative
+            overflow: hidden
+            width: 40%
+            height: auto
+
+            img
+                position: absolute
+                top: 0
+                height: 100%
+                width: 200%
+                object-fit: cover
+                left: 0
+
+    // Partie droite : Se connecter
+    .column-login
+        display: flex
+        text-align: right
+
+        .bloc-left
+            position: relative
+            overflow: hidden
+            width: 40%
+            height: auto
+
+            img
+                position: absolute
+                top: 0
+                height: 100%
+                width: 200%
+                object-fit: cover
+                right: 0
+
+        .bloc-right
+            width: 60%
+            padding: 10%
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    .register-login-section
+
+        .column-register
+            display: block
+            text-align: center
+
+            .bloc-left
+                width: 100%
+
+                img
+                    display: none
+
+        .column-login
+            display: block
+            text-align: center
+
+            .bloc-right
+                width: 100%
+
+                img
+                    display: none
+
+/* Version Mobile */
+@media screen and ( max-width: 769px )
+    .register-login-section
+        .row
+            flex-direction: column
+
+            &::before
+                display: none
+
+            .column-register,
+            .column-login
+                width: 100%
+                text-align: center
+
+            .column-register
+                order: 1
+                border-bottom: 1px solid black
+
+            .column-login
+                order: 2
+////////////////////////////////////////

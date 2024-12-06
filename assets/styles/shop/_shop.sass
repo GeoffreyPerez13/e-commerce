@@ -1,0 +1,70 @@
+.shop-page
+    padding: 8% 5% 5% 5%
+
+    .d-flex
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-evenly
+        gap: 2%
+
+    .card
+        width: 30%
+        height: auto
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        border-radius: 10px
+
+    .card-img-top
+        width: 100%
+        height: 200px
+        object-fit: cover
+        border-radius: 10px 10px 0 0
+
+    .card-body
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        padding: 10px
+
+    .card-title
+        font-weight: bold
+
+    .card-text
+        font-size: 15px
+
+////////////////////////////////////////
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    .shop-page
+        padding: 15% 5% 5% 5%
+
+        .d-flex
+            justify-content: space-between
+            gap: 5%
+
+        .card
+            width: 35%
+            height: auto
+
+////////////////////////////////////////
+
+/* Version Mobile */
+@media screen and ( max-width: 769px )
+    .shop-page
+        padding: 20% 5% 5% 5%
+
+        .d-flex
+            justify-content: center
+            gap: 0
+
+        .card
+            width: 100%
+            height: auto
+
+        .card-body
+            padding: 3%
+
+        .card-img-top
+            height: 350px

@@ -1,11 +1,13 @@
-<h1>Bonjour !</h1>
+<h1>Mail de réinitialisation de mot de passe pour {{ company }}</h1>
 
-<p>Pour réinitialiser votre mot de passe, cliquez sur le lien ci-dessous</p>
-
+<p>Bonjour, veuillez trouver ci-joint le lien de réinitialisation de mot de passe pour votre compte chez {{ company
+    }}.</p>
+</p>
+<p>Veuillez cliquer sur le lien ci-dessous :</p>
 <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token:
     resetToken.token}) }}</a>
-
 <p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData,
     'ResetPasswordBundle') }}.</p>
-
-<p>Merci !</p>
+<p>Nous avons hâte de vous revoir sur notre site.</p>
+<p>Bien à vous,</p>
+<p>{{ company }}</p>

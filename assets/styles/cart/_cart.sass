@@ -1,0 +1,138 @@
+.section-cart-page
+    padding: 8% 5% 5% 5%
+
+    .container
+        max-width: 90%
+        margin: 0
+        padding: 0
+
+    .row
+        display: flex
+        flex-direction: column
+
+        .article
+            width: 70%
+
+    .card
+        border: 1px solid #ddd
+        border-radius: 8px
+        background-color: #fff
+
+        .cart-item-title
+            font-weight: bold
+            color: #333
+            margin-bottom: 1%
+
+        .remove-button
+            margin-left: auto
+            background-color: rgba(184, 46, 16, 1)
+
+        .cart-item-image
+            width: 30%
+            margin-right: 3%
+
+            img
+                border-radius: 5px
+                width: 100%
+                height: auto
+                object-fit: cover
+
+        .cart-item-details
+            width: 70%
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+
+            .cart-item-description
+                color: #555
+                margin-bottom: 10px
+
+            .informations
+                margin-bottom: 2%
+
+                .informations
+                    display: flex
+                    gap: 1rem
+                    align-items: center
+
+        .divider
+            margin: 0 2%
+            border-left: 1px solid black
+            height: auto
+
+            .d-flex
+                span
+                    color: #666
+                    &:not(:last-child)
+                        margin-right: 10px
+
+            .btn
+                padding: 0.5rem 1rem
+
+        .buttons
+            gap: 3%
+
+    .cart-footer-card
+        width: 30%
+
+    .card
+        border: 1px solid #ddd
+        border-radius: 8px
+        background-color: #fff
+        padding: 1rem
+        display: flex
+        flex-direction: column
+
+    .cart-footer
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+
+        p
+            font-weight: bold
+            margin: 0
+
+        .btn-primary
+            margin-top: 1%
+            padding: 2% 5%
+////////////////////////////////////////
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and (max-width: 1000px)
+    .section-cart-page
+        padding: 15% 5% 5% 5%
+
+        .row .article
+            width: 100%
+
+        .cart-item-image
+            width: 40%
+
+        .cart-item-details
+            width: 60%
+
+/* Version Mobile */
+@media screen and (max-width: 769px)
+    .section-cart-page
+        padding: 20% 5% 5% 5%
+
+        .cart-footer-card
+            width: 80%
+
+        .card
+            flex-direction: column
+
+            .cart-item-image
+                width: 100%
+                margin-bottom: 10px
+
+            .cart-item-details
+                width: 100%
+
+                .informations
+                    flex-direction: column
+
+                    .divider
+                        display: none
+////////////////////////////////////////

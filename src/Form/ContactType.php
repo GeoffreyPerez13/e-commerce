@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -15,8 +14,13 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('email', HiddenType::class)
-            ->add('message', TextareaType::class, ['label' => 'message'])
-        ;
+            ->add('message', TextareaType::class, [
+                'label' => 'Message',
+                'attr' => [
+                    'style' => 'width: 100%; height: 250px; resize: none;',
+                    'placeholder' => 'Entrez votre message ici...',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

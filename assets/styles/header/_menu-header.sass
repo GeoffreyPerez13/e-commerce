@@ -1,35 +1,47 @@
 header
     position: fixed
     width: 100%
-    background-color: rgba(89, 171, 238, 1)
+    background-color: rgba(75, 161, 83, 1)
     z-index: 2000
-    border: 1px solid 1px solid rgba(63, 142, 207, 1)
+    border: 1px solid rgba(9, 40, 12, 0.3)
+    padding: 1% 0 1% 0
+
+#navbar-mobile
+    display: none
+
+#hamburger-menu
+    display: none
+
+.navbar-header
+    display: flex
+    align-items: center
 
 /* PARTIE GAUCHE */
 .navbar-left
     display: flex
     align-items: center
-    margin-left: 1%
+    width: 30%
 
     a
         text-decoration: none
-        margin-left: 15%
+        margin-left: 3%
         color: white
         font-weight: bold
         font-size: 20px
-        letter-spacing: 1%
+        letter-spacing: 2px
 
     a:hover
-        color: rgba(3, 18, 34, 0.8)
+        color: rgba(29, 94, 35, 0.8)
         transition: 0.5s ease
 
     img
-        width: 15%
+        width: 7%
         cursor: pointer
+        margin-left: 3%
 
 /* PARTIE DROITE */
 .navbar-right
-    width: 60%
+    width: 100%
 
     ul
         display: flex
@@ -37,11 +49,12 @@ header
         margin: 0
         color: white
         justify-content: end
+        padding-left: 0
 
     ul li
         width: 20%
         text-align: center
-        border-right: 1px solid rgba(3, 18, 34, 0.5)
+        border-right: 1px solid rgba(29, 94, 35, 0.8)
 
         &:last-child
             border-right: none
@@ -51,5 +64,117 @@ header
     text-decoration: none
 
 .nav-header:hover
-    color: rgba(3, 18, 34, 1)
+    color: rgba(9, 40, 12, 1)
     transition: 0.4s ease
+////////////////////////////////////////
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    header
+        padding: 2% 0 2% 0
+
+        /* PARTIE GAUCHE */
+        .navbar-left
+            display: flex
+            align-items: center
+            width: 32%
+
+            a
+                font-size: 18px
+
+            img
+                width: 10%
+                margin-left: 5%
+
+        /* PARTIE DROITE */
+        .navbar-right
+            width: 80%
+            font-size: 13px
+
+        .navbar-right ul li
+            width: 25%
+////////////////////////////////////////
+
+/* Version Mobile */
+@media screen and ( max-width: 769px )
+    .navbar-header
+        display: block
+
+        .navbar-left
+            width: 100%
+
+            img
+                width: 5%
+                margin-left: 3%
+
+    #navbar-desktop
+        display: none
+
+    #hamburger-menu
+        display: block
+        background: none
+        border: none
+        cursor: pointer
+        position: absolute
+        right: 5%
+        top: 50%
+        transform: translateY(-50%)
+        z-index: 3000
+
+        span
+            display: block
+            width: 25px
+            height: 3px
+            background-color: white
+            margin: 5px 0
+            transition: all 0.3s ease
+
+    #navbar-mobile
+        display: block
+        position: relative
+        width: 100%
+
+        ul
+            display: none
+            list-style: none
+            position: absolute
+            top: 100%
+            right: 0
+            background-color: rgba(75, 161, 83, 1)
+            width: 100%
+            text-align: center
+            padding: 0 0 3% 0
+            z-index: 2000
+            border-bottom: 1px solid rgba(9, 40, 12, 0.3)
+
+        li
+            margin: 0
+            width: 40%
+            margin: 0 auto
+            padding: 4% 0
+            background-color: rgba(75, 161, 83, 1)
+            text-align: center
+            opacity: 0
+            transform: translateY(-10px)
+            transition: opacity 0.3s ease, transform 0.3s ease
+            border-right: none
+            border-bottom: 1px solid rgba(29, 94, 35, 0.8)
+
+            &:last-child
+                border-bottom: none
+
+        li a
+                display: block
+                width: 100%
+                color: white
+                text-decoration: none
+
+        li a:hover
+                color: rgba(29, 94, 35, 0.8)
+                transition: 0.5s ease
+
+        li.visible
+            opacity: 1
+            transform: translateY(0)
+////////////////////////////////////////

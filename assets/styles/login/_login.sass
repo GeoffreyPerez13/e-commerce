@@ -1,0 +1,81 @@
+.login-page
+    padding: 0
+
+    .container
+        max-width: 100%
+
+        .row
+            display: flex
+
+        // Partie gauche
+        #login-container
+            width: 50%
+            padding: 8% 5% 5% 5%
+
+            label
+                display: block
+                margin-bottom: 1%
+
+            label:after
+                content: " *"
+                color: rgba(184, 46, 16, 1)
+
+            #required-field
+                color: rgba(184, 46, 16, 1)
+                font-size: 10px
+
+            .form-control
+                width: 50%
+                margin-bottom: 2%
+
+            #eye
+                display: flex
+                align-items: center
+
+                .eye-on,
+                .eye-off
+                    margin-right: 1%
+                    cursor: pointer
+
+            .btn-primary
+                margin: 2% 0
+                width: auto
+
+        // Partie droite
+        .image-container
+            padding: 0
+
+            .img-fluid
+                height: 100%
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    .registration-page
+
+    .container
+
+        .row
+
+            #login-container
+                padding: 15% 5% 5% 5%
+
+                .form-control
+                    width: 75%
+////////////////////////////////////////
+
+/* Version Mobile */
+@media screen and ( max-width: 769px )
+    .registration-page
+
+    .container
+
+        .row
+
+            #login-container
+                width: 100%
+                padding: 20% 5% 5% 5%
+
+    .image-container
+        display: none
+////////////////////////////////////////

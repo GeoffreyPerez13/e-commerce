@@ -1,5 +1,3 @@
-console.log('coucou')
-
 // Ouvrir la lightbox avec l'image sélectionnée
 function openLightbox(element) {
     const lightbox = document.getElementById('lightbox');

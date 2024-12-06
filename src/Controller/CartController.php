@@ -33,7 +33,7 @@ class CartController extends AbstractController
     {
         $cartService->add($id);
 
-        return $this->redirectToRoute('app_shop');
+        return $this->redirectToRoute('app_cart');
     }
 
     #[Route('/profile/cart/remove/{id}', name: 'app_cart_remove')]
@@ -49,6 +49,6 @@ class CartController extends AbstractController
     {
         $cartService->less($id);
 
-        return $this->redirectToRoute('app_shop');
+        return $this->redirectToRoute('app_cart');
     }
 }

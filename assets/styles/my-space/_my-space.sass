@@ -1,0 +1,109 @@
+.my-space-page
+    padding: 0
+    border: none
+
+    .container
+        max-width: 100%
+
+        .row
+            display: flex
+
+        // Partie gauche
+        #my-space-container
+            width: 50%
+            padding: 8% 5% 5% 5%
+
+            label
+                font-weight: bold
+
+            a
+                color: rgba(75, 161, 83, 1)
+
+            a:hover
+                color: rgba(29, 94, 35, 1)
+
+            .content
+                display: flex
+                justify-content: space-between
+
+                .buttons-section
+
+                    ul
+                        list-style: none
+                        text-align: right
+
+                        li
+                            margin: 0 0 5% 0
+
+                .btn
+                    color: white
+
+                .btn:hover
+                    background-color: rgba(75, 161, 83, 1)
+                    color: rgba(9, 40, 12, 1)
+                    border: 1px solid rgba(9, 40, 12, 1)
+                    transition: 0.5s ease
+
+        // Partie droite
+        .col-md-6
+            padding: 0
+
+            .img-fluid
+                height: 100%
+                width: 1000%
+////////////////////////////////////////
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    .my-space-page
+
+    .container
+
+        .row
+
+            #my-space-container
+                padding: 15% 5% 5% 5%
+                display: flex
+                flex-direction: column
+
+                .content
+                    flex-direction: column
+
+                    .buttons-section
+                        margin-top: 1%
+                        text-align: center
+
+                        ul
+                            padding: 0
+                            list-style: none
+
+                            li
+                                margin-bottom: 3%
+            .col-md-6
+
+                .image-container
+                    height: 100%
+////////////////////////////////////////
+
+/* Version Mobile */
+@media screen and ( max-width: 769px )
+    .my-space-page
+
+        .container
+
+            .row
+
+                #my-space-container
+                    padding: 20% 5% 5% 5%
+                    width: 100%
+                    display: flex
+                    flex-direction: column
+
+                    .buttons-section
+                        margin-top: 3%
+                        width: 100%
+
+    .image-container
+        display: none
+////////////////////////////////////////

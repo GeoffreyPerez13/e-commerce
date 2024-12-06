@@ -4,6 +4,10 @@
     .container
         max-width: 100%
 
+        .row
+            display: flex
+
+        // Partie gauche
         #registration-container
             width: 50%
             padding: 8% 5% 5% 5%
@@ -45,5 +49,42 @@
                     margin-top: 2%
                     width: auto
 
+        // Partie droite
+        .image-container
+            padding: 0
+
+            .img-fluid
+                height: 100%
+////////////////////////////////////////
+
+/* RESPONSIVE */
+/* Version Tablette */
+@media screen and ( max-width: 1000px )
+    .registration-page
+
+    .container
+
         .row
-            display: flex
+
+            #registration-container
+                padding: 15% 5% 5% 5%
+
+                .form-control
+                    width: 75%
+////////////////////////////////////////
+
+/* Version Mobile */
+@media screen and ( max-width: 769px )
+    .registration-page
+
+    .container
+
+        .row
+
+            #registration-container
+                width: 100%
+                padding: 20% 5% 5% 5%
+
+    .image-container
+        display: none
+////////////////////////////////////////

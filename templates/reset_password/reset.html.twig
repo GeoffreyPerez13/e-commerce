@@ -3,17 +3,35 @@
 {% block title %}Réinitialiser le mot de passe{% endblock %}
 
 {% block body %}
-<h1>Réinitialiser le mot de passe</h1>
+<section class="reset-password-page">
+    <div class="container">
+        <div class="row">
+            <!-- Colonne gauche : Formulaire -->
+            <div id="reset-password-container">
+                {% for flash_error in app.flashes('reset_password_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+                <h1>Réinitialiser le mot de passe</h1>
 
-{{ form_start(resetForm) }}
-{{ form_row(resetForm.plainPassword) }}
-<div class="eye" id="eye">
-    <span class="material-symbols-outlined eye-on">visibility</span>
-    <span class="material-symbols-outlined eye-off">visibility_off</span>
-    <span class="displayEye">Afficher le mot de passe</span>
-    <span class="noDisplay">Cacher le mot de passe</span>
-</div>
-<br>
-<button class="btn btn-primary">Réinitialiser le mot de passe</button>
-{{ form_end(resetForm) }}
+                {{ form_start(resetForm) }}
+                {{ form_row(resetForm.plainPassword) }}
+                <div class="eye" id="eye">
+                    <span class="material-symbols-outlined eye-on">visibility</span>
+                    <span class="material-symbols-outlined eye-off">visibility_off</span>
+                    <span class="displayEye">Afficher le mot de passe</span>
+                    <span class="noDisplay">Cacher le mot de passe</span>
+                </div>
+                <br>
+                <button class="btn btn-primary">Réinitialiser le mot de passe</button>
+                {{ form_end(resetForm) }}
+            </div>
+
+            <!-- Colonne droite : Image -->
+            <div class="col-md-6 image-container">
+                <img src="{{ asset('images/banners/form-banner-1.jpg') }}" alt="Image réinitialisation mot de passe"
+                    class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
