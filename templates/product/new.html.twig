@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Product{% endblock %}
+{% block title %}Nouvel Article{% endblock %}
 
 {% block body %}
-<h1>Create new Product</h1>
-
-{{ include('product/_form.html.twig') }}
-<br>
-<a href="{{ path('app_product_index') }}">back to list</a>
+<section class="product-edit-page">
+    <h1>Créer un nouvel article</h1>
+    {{ include('product/_form.html.twig') }}
+    <a href="{{ path('app_product_index') }}" class="custom-link">Retour à la liste des articles</a>
+</section>
 {% endblock %}

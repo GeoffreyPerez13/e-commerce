@@ -1,0 +1,58 @@
+.product-edit-page
+    padding: 8% 1% 5% 1%
+
+.table-responsive
+    overflow: hidden
+
+.table thead
+    text-transform: uppercase
+
+.table tbody tr:hover
+    background-color: rgba(0, 0, 0, 0.05)
+
+.text-truncate
+    max-width: 150px
+
+.action-links
+    display: flex
+    flex-direction: column
+
+    .btn-danger
+        background-color: rgba(184, 46, 16, 1)
+
+.custom-link
+    color: #4ba153
+    margin: 1% 0
+
+    &:hover
+        color: rgba(29, 94, 35, 1)
+////////////////////////////////////////
+
+@media screen and (max-width: 1000px)
+    .product-edit-page
+        padding: 15% 1% 5% 1%
+
+    .text-truncate
+        max-width: 100px
+////////////////////////////////////////
+
+@media screen and (max-width: 769px)
+    .product-edit-page
+        padding: 20% 1% 5% 1%
+
+    .table-responsive
+        border: none
+        box-shadow: none
+
+    .table thead
+        font-size: 0.9rem
+
+    .table tbody tr td
+        font-size: 0.8rem
+
+        .col-description
+            display: none
+
+    .text-truncate
+        max-width: 75px
+////////////////////////////////////////
