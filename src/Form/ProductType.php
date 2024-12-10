@@ -21,8 +21,8 @@ class ProductType extends AbstractType
             ->add('currency', TextType::class, ['label' => 'Devise', 'attr' => ['placeholder' => 'Devise']])
             ->add('image', TextType::class, ['label' => 'Image', 'attr' => ['placeholder' => 'Image']])
             ->add('imageFile', VichFileType::class, [
+                'required' => false,
                 'label' => 'Télécharger une nouvelle image',
-                'attr' => ['placeholder' => 'Télécharger une nouvelle image'],
                 'download_label' => 'Télécharger', // Définit le libellé du lien de téléchargement
                 'allow_delete' => false, // Enlever la case cochable
             ]);

@@ -21,7 +21,7 @@ class BuyController extends AbstractController
             $YOUR_DOMAIN = 'http://127.0.0.1:8000';     
         } else {
             $stripeSecretKey = $_ENV["STRIPE_SECRET_KEY_PROD"];
-            $YOUR_DOMAIN = 'https://atelierpanthera.fr';  
+            $YOUR_DOMAIN = 'https://lamainverte.fr';  
         }
 
         \Stripe\Stripe::setApiKey($stripeSecretKey);

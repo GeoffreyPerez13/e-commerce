@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -29,6 +30,12 @@ class Product
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: "products", fileNameProperty: "image")]
+    #[Assert\File(
+        maxSize: "10M", // Taille maximale (ex. 10 Mo)
+        maxSizeMessage: "Le fichier est trop volumineux. La taille maximale est de 10 Mo.",
+        mimeTypes: ["image/jpeg", "image/png"],
+        mimeTypesMessage: "Veuillez télécharger un fichier au format JPEG ou PNG."
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255)]
@@ -90,7 +97,7 @@ class Product
     /**
      * Get the value of imageFile
      */ 
-    public function getImageFile()
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
@@ -100,7 +107,7 @@ class Product
      *
      * @return  self
      */ 
-    public function setImageFile($imageFile)
+    public function setImageFile(File $imageFile = null): self
     {
         $this->imageFile = $imageFile;
 

@@ -13,7 +13,7 @@ twig:
     tva: "Non applicable ART.293B du CGI"
     quantity: "1"
     host: "ionos"
-    domain: "atelierpanthera.fr"
+    domain: "lamainverte.fr"
 when@test:
   twig:
     strict_variables: true
